@@ -40,3 +40,11 @@ body.debug {
     radial-gradient(circle at 30% 20%, rgba(32,211,197,.08), transparent 35%),
     #090d10 !important;
 }
+
+body.debug .overlay {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) scale(var(--preview-scale, 1));
+  transform-origin: top center;
+}
