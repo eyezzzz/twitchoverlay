@@ -1,5 +1,6 @@
 import { ChatPanel } from '../components/ChatPanel'
 import { ClientChrome } from '../components/ClientChrome'
+import { DonationReminder } from '../components/SupportWidgets'
 import { WebcamFrame } from '../components/WebcamFrame'
 
 export function ClientScene() {
@@ -8,6 +9,7 @@ export function ClientScene() {
       <ClientChrome />
       <WebcamFrame mode="client" />
       <ChatPanel />
+      <DonationReminder mode="client" />
     </main>
   )
 }
