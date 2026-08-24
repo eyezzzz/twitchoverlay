@@ -1,36 +1,25 @@
 /*
- * The League Client source is captured at 1280x720, but that is only the
- * source resolution. In the 1920x1080 broadcast canvas we scale it up while
- * preserving 16:9 so the client remains the dominant visual element.
+ * League Client source: 1280x720 (16:9).
+ * Keep the original FIETZLOL client composition that looked right on the
+ * 1920x1080 canvas, but make the main frame itself true 16:9 so the capture
+ * fits without distortion.
+ *
+ * OBS target for LEAGUE CLIENT:
+ *   position: x 40 / y 92
+ *   displayed size: 1512 x 850.5
+ *   source remains 1280 x 720
  */
 
 .overlay--client {
-  --client-x: 32px;
-  --client-y: 88px;
-  --client-w: 1568px;
-  --client-h: 882px;
-  --client-gap: 16px;
-  --chat-w: 272px;
-  --outer-right: 32px;
+  --client-x: 40px;
+  --client-y: 92px;
+  --client-w: 1512px;
+  --client-h: 850.5px;
+  --chat-w: 310px;
+  --outer-right: 40px;
 }
 
-.overlay--client::before {
-  background:
-    linear-gradient(90deg, rgba(32,211,197,.02), transparent 12%, transparent 88%, rgba(214,180,106,.018)),
-    linear-gradient(180deg, rgba(7,11,14,.94) 0 72px, transparent 72px 100%);
-}
-
-.overlay--client .client-header {
-  padding-left: var(--client-x);
-  padding-right: var(--outer-right);
-}
-
-.overlay--client .client-header::after {
-  left: var(--client-x);
-  right: var(--outer-right);
-}
-
-/* Large 16:9 presentation frame for the captured 1280x720 League client. */
+/* Restore the original visual scale of the client scene. */
 .overlay--client .client-content-frame {
   left: var(--client-x);
   top: var(--client-y);
@@ -38,55 +27,36 @@
   height: var(--client-h);
 }
 
-/* Narrow chat rail so the client stays visually dominant. */
+/* Chat keeps the original width and aligns with the 16:9 client frame. */
 .overlay--client .chat-panel {
   top: var(--client-y);
   right: var(--outer-right);
   width: var(--chat-w);
   height: var(--client-h);
-  grid-template-rows: 50px 1fr 30px;
+  grid-template-rows: 58px 1fr 36px;
 }
 
 .overlay--client .chat-panel__header {
-  padding: 0 13px;
-  font-size: 9px;
+  padding: 0 18px;
+  font-size: 10px;
 }
 
 .overlay--client .chat-panel__messages {
-  padding: 13px;
-  gap: 10px;
+  padding: 15px 16px;
+  gap: 13px;
 }
 
 .overlay--client .chat-message {
-  font-size: 11px;
+  font-size: 12px;
 }
 
-/* Camera overlays the lower-left corner without consuming extra canvas space. */
+/* Restore the camera proportions/placement from the composition you liked. */
 .overlay--client .webcam-frame--client {
-  left: 56px;
-  top: 728px;
-  bottom: auto;
-  width: 384px;
-  height: 216px;
+  left: 58px;
+  top: auto;
+  bottom: 84px;
+  width: 400px;
+  height: 225px;
 }
 
-/* Only a tiny signature rail below the main content. */
-.overlay--client .client-footer {
-  left: var(--client-x);
-  right: auto;
-  top: 984px;
-  bottom: auto;
-  width: var(--client-w);
-  height: 32px;
-  padding: 0 8px;
-  gap: 12px;
-  background: rgba(7,11,14,.42);
-}
-
-.overlay--client .client-footer__role {
-  font-size: 8px;
-}
-
-.overlay--client .client-footer__signature {
-  font-size: 7px;
-}
+/* Let the original compact footer from overlay.css handle the bottom rail. */
