@@ -11,6 +11,8 @@ type ChatMessage = {
   timestamp: number
 }
 
+const VISIBLE_CHAT_MESSAGES = 12
+
 const demoMessages: ChatMessage[] = [
   { id: '1', platform: 'twitch', user: 'RakinDoSuporte', text: 'salve!', timestamp: 1 },
   { id: '2', platform: 'twitch', user: 'leonamain', text: 'bora duo', timestamp: 2 },
@@ -50,7 +52,7 @@ export function ChatPanel({ compact = false }: { compact?: boolean }) {
         const next = (payload.messages || [])
           .filter(message => message?.id && message?.text)
           .sort((a, b) => a.timestamp - b.timestamp)
-          .slice(-24)
+          .slice(-VISIBLE_CHAT_MESSAGES)
 
         setMessages(next)
       } catch {
