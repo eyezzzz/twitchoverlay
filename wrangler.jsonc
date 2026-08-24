@@ -1,9 +1,10 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "fietzlol-overlay",
+  "name": "twitchoverlay",
   "compatibility_date": "2026-08-24",
   "main": "./worker/index.js",
   "keep_vars": true,
+  "workers_dev": true,
   "secrets": {
     "required": [
       "TWITCH_CLIENT_SECRET"
