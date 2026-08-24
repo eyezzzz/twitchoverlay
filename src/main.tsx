@@ -7,6 +7,7 @@ import './styles/overlay.css'
 import './styles/client-fit.css'
 import './styles/client-motion.css'
 import './styles/transitions.css'
+import './styles/ingame.css'
 import './debug'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
