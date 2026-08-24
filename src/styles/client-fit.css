@@ -18,9 +18,7 @@
   height: 864px;
 }
 
-/*
- * Chat stops above the LivePix zone.
- */
+/* Chat stops above the LivePix zone. */
 .overlay--client .chat-panel {
   top: 90px;
   right: 32px;
@@ -29,21 +27,25 @@
 }
 
 /*
- * LIVEPIX META/QRCODE source currently measures 483x362 in OBS.
- * OBS renders the 1920x1080 overlay at 2/3 scale, so the matching design-space
- * box is 724.5x543. We preserve the previous dock bottom at OBS y=636.
+ * LivePix belongs to the same right rail as chat.
  *
- * OBS target:
- *   x = 776
- *   y = 274
- *   w = 483
- *   h = 362
+ * League Client in OBS:
+ *   x 32 / y 60 / 1024x576
+ *   right edge = 1056
+ *   bottom edge = 636
+ *
+ * This dock renders at OBS scale as:
+ *   x ~= 1067 / y = 448 / 192x188
+ *
+ * The LivePix Browser Source itself is 483x362, but its visible QR is centered
+ * inside that transparent 4:3 source. Position the large source by its center;
+ * do not make the dock 483x362.
  */
 .overlay--client .livepix-dock {
-  top: 411px;
-  right: 31.5px;
-  width: 724.5px;
-  height: 543px;
+  top: 672px;
+  right: 32px;
+  width: 288px;
+  height: 282px;
 }
 
 /*
