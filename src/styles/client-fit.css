@@ -27,17 +27,16 @@
 }
 
 /*
- * Match the overlay webcam frame to the webcam's CURRENT position in OBS.
- * OBS position: x 44 / y 477.
- * The browser source is rendered at 2/3 scale, so the matching design-space
- * coordinates are x 66 / y 715.5.
+ * The OBS source transform is x 44 / y 477, but the visible camera image in
+ * the preview starts roughly 30 canvas pixels lower than that transform box.
+ * Match the frame to the VISIBLE image instead of the source bounds.
  *
- * Size remains the existing 400x225 design-space frame, which appears as
- * approximately 267x150 in the 1280x720 OBS canvas.
+ * OBS visual target: x 44 / y 507 / ~267 x 150
+ * Design-space equivalent at 1.5x: x 66 / y 760.5 / 400 x 225
  */
 .overlay--client .webcam-frame--client {
   left: 66px;
-  top: 715.5px;
+  top: 760.5px;
   bottom: auto;
   width: 400px;
   height: 225px;
