@@ -5,6 +5,10 @@
   "main": "./worker/index.js",
   "keep_vars": true,
   "workers_dev": true,
+  "vars": {
+    "TWITCH_CLIENT_ID": "4ppkhgoo253pr6lnyuyr0jhp4txi17",
+    "TWITCH_REDIRECT_URI": "https://twitchoverlay.mcpe3004.workers.dev/auth/twitch/callback"
+  },
   "secrets": {
     "required": [
       "TWITCH_CLIENT_SECRET"
