@@ -1,22 +1,22 @@
 /*
- * League Client source is 1280x720, but the broadcast canvas is 1920x1080.
- * We display the capture at 1.2x (1536x864), preserving the exact 16:9 aspect
- * ratio. In OBS, keep the source aspect ratio and scale it to these dimensions.
+ * The League Client source is captured at 1280x720, but that is only the
+ * source resolution. In the 1920x1080 broadcast canvas we scale it up while
+ * preserving 16:9 so the client remains the dominant visual element.
  */
 
 .overlay--client {
-  --client-x: 48px;
-  --client-y: 92px;
-  --client-w: 1536px;
-  --client-h: 864px;
-  --client-gap: 24px;
-  --chat-w: 264px;
-  --outer-right: 48px;
+  --client-x: 32px;
+  --client-y: 88px;
+  --client-w: 1568px;
+  --client-h: 882px;
+  --client-gap: 16px;
+  --chat-w: 272px;
+  --outer-right: 32px;
 }
 
 .overlay--client::before {
   background:
-    linear-gradient(90deg, rgba(32,211,197,.025), transparent 12%, transparent 88%, rgba(214,180,106,.02)),
+    linear-gradient(90deg, rgba(32,211,197,.02), transparent 12%, transparent 88%, rgba(214,180,106,.018)),
     linear-gradient(180deg, rgba(7,11,14,.94) 0 72px, transparent 72px 100%);
 }
 
@@ -30,7 +30,7 @@
   right: var(--outer-right);
 }
 
-/* Exact 16:9 broadcast frame: native 1280x720 source scaled uniformly to 1536x864. */
+/* Large 16:9 presentation frame for the captured 1280x720 League client. */
 .overlay--client .client-content-frame {
   left: var(--client-x);
   top: var(--client-y);
@@ -38,49 +38,49 @@
   height: var(--client-h);
 }
 
-/* Compact chat rail beside the enlarged client. */
+/* Narrow chat rail so the client stays visually dominant. */
 .overlay--client .chat-panel {
   top: var(--client-y);
   right: var(--outer-right);
   width: var(--chat-w);
   height: var(--client-h);
-  grid-template-rows: 52px 1fr 32px;
+  grid-template-rows: 50px 1fr 30px;
 }
 
 .overlay--client .chat-panel__header {
-  padding: 0 14px;
+  padding: 0 13px;
   font-size: 9px;
 }
 
 .overlay--client .chat-panel__messages {
-  padding: 14px 14px;
-  gap: 11px;
+  padding: 13px;
+  gap: 10px;
 }
 
 .overlay--client .chat-message {
   font-size: 11px;
 }
 
-/* 16:9 camera floating over the bottom-left of the client. */
+/* Camera overlays the lower-left corner without consuming extra canvas space. */
 .overlay--client .webcam-frame--client {
-  left: 72px;
-  top: 706px;
+  left: 56px;
+  top: 728px;
   bottom: auto;
   width: 384px;
   height: 216px;
 }
 
-/* Minimal rail below the main client frame. */
+/* Only a tiny signature rail below the main content. */
 .overlay--client .client-footer {
   left: var(--client-x);
   right: auto;
-  top: 970px;
+  top: 984px;
   bottom: auto;
   width: var(--client-w);
-  height: 38px;
-  padding: 0 10px;
-  gap: 14px;
-  background: rgba(7,11,14,.48);
+  height: 32px;
+  padding: 0 8px;
+  gap: 12px;
+  background: rgba(7,11,14,.42);
 }
 
 .overlay--client .client-footer__role {
