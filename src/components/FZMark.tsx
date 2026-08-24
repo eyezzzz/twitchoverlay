@@ -11,9 +11,18 @@ export function FZMark({ size = 44 }: FZMarkProps) {
       className="fz-mark"
       src={FZ_APPROVED_PNG}
       width={size}
+      height={size}
       draggable={false}
       alt=""
-      style={{ display: 'block', height: 'auto', objectFit: 'contain' }}
+      style={{
+        display: 'block',
+        width: `${size}px`,
+        height: `${size}px`,
+        objectFit: 'contain',
+        objectPosition: 'center',
+        maxWidth: 'none',
+        maxHeight: 'none',
+      }}
     />
   )
 }
