@@ -1,11 +1,33 @@
 import { ChatPanel } from '../components/ChatPanel'
 import { WebcamFrame } from '../components/WebcamFrame'
 
+function InstagramIcon() {
+  return (
+    <svg className="ingame-socials__instagram" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="2" />
+      <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="2" />
+      <circle cx="17.4" cy="6.7" r="1.15" fill="currentColor" />
+    </svg>
+  )
+}
+
 export function InGameScene() {
   return (
     <main className="overlay overlay--ingame">
-      <WebcamFrame mode="ingame" />
       <ChatPanel compact />
+      <WebcamFrame mode="ingame" />
+
+      <footer className="ingame-socials" aria-hidden="true">
+        <div className="ingame-socials__item">
+          <span className="ingame-socials__platform">X</span>
+          <span>@fietzlol</span>
+        </div>
+        <span className="ingame-socials__divider" />
+        <div className="ingame-socials__item ingame-socials__item--instagram">
+          <InstagramIcon />
+          <span>@fietzlol</span>
+        </div>
+      </footer>
     </main>
   )
 }
