@@ -25,7 +25,7 @@ export function ClientChrome() {
       </div>
 
       <div className="client-footer" aria-hidden="true">
-        <Brand compact showDescriptor />
+        <span className="client-footer__role">FIETZLOL / SUPPORT</span>
         <div className="client-footer__line" />
         <span className="client-footer__signature">VISION • MAP • TEAM</span>
       </div>
