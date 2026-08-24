@@ -1,5 +1,21 @@
 import { Brand } from './Brand'
 
+function InstagramIcon() {
+  return (
+    <svg
+      className="social-item__instagram-icon"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="2" />
+      <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="2" />
+      <circle cx="17.4" cy="6.7" r="1.15" fill="currentColor" />
+    </svg>
+  )
+}
+
 export function ClientChrome() {
   return (
     <>
@@ -59,7 +75,7 @@ export function ClientChrome() {
           </div>
           <span className="social-rail__divider" />
           <div className="social-item social-item--instagram">
-            <span className="social-item__platform">IG</span>
+            <span className="social-item__platform social-item__platform--instagram"><InstagramIcon /></span>
             <span className="social-item__handle">@fietzlol</span>
           </div>
         </div>
