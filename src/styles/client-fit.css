@@ -19,8 +19,7 @@
 }
 
 /*
- * Chat stops above the LivePix zone. At OBS scale this is about 192 x 368 px,
- * leaving the lower part of the right rail free for the existing QR source.
+ * Chat stops above the LivePix zone.
  */
 .overlay--client .chat-panel {
   top: 90px;
@@ -29,12 +28,22 @@
   height: 552px;
 }
 
-/* Reserved visual dock for the separate LIVEPIX QRCODE source in OBS. */
+/*
+ * LIVEPIX META/QRCODE source currently measures 483x362 in OBS.
+ * OBS renders the 1920x1080 overlay at 2/3 scale, so the matching design-space
+ * box is 724.5x543. We preserve the previous dock bottom at OBS y=636.
+ *
+ * OBS target:
+ *   x = 776
+ *   y = 274
+ *   w = 483
+ *   h = 362
+ */
 .overlay--client .livepix-dock {
-  top: 672px;
-  right: 32px;
-  width: 288px;
-  height: 282px;
+  top: 411px;
+  right: 31.5px;
+  width: 724.5px;
+  height: 543px;
 }
 
 /*
