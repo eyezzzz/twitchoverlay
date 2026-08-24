@@ -1,0 +1,475 @@
+/* ---------- Brand ---------- */
+
+.brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: .08em;
+  line-height: 1;
+}
+
+.brand__fietz {
+  color: #f2f2f0;
+}
+
+.brand__lol {
+  color: var(--accent);
+}
+
+.brand__descriptor {
+  margin-left: 14px;
+  font-family: var(--font-ui);
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: .35em;
+  color: var(--gold);
+}
+
+.brand--compact {
+  font-size: 29px;
+}
+
+.fz-mark {
+  color: #f4f4f0;
+  filter: drop-shadow(0 0 12px rgba(32, 211, 197, .16));
+}
+
+/* ---------- Shared details ---------- */
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 14px rgba(32, 211, 197, .6);
+}
+
+.vision-dot {
+  width: 11px;
+  height: 11px;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  position: relative;
+  display: block;
+}
+
+.vision-dot::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+/* ---------- Client scene ---------- */
+
+.overlay--client::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(32,211,197,.06), transparent 10%, transparent 90%, rgba(214,180,106,.04)),
+    linear-gradient(180deg, rgba(7,11,14,.94) 0 84px, transparent 84px 958px, rgba(7,11,14,.94) 958px 100%);
+  z-index: 1;
+}
+
+.client-header {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 84px;
+  padding: 0 58px;
+  display: grid;
+  grid-template-columns: 330px 1fr 330px;
+  align-items: center;
+  background: rgba(7, 11, 14, .94);
+  border-bottom: 1px solid rgba(32, 211, 197, .28);
+}
+
+.client-header::after {
+  content: "";
+  position: absolute;
+  left: 58px;
+  right: 58px;
+  bottom: -1px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold), transparent 24%, transparent 76%, var(--accent));
+  opacity: .55;
+}
+
+.client-header__nav {
+  justify-self: center;
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .34em;
+  color: #c7cdcf;
+}
+
+.client-header__nav i {
+  color: var(--gold);
+  font-style: normal;
+  opacity: .85;
+}
+
+.client-header__mark {
+  justify-self: end;
+}
+
+.client-content-frame {
+  position: absolute;
+  z-index: 3;
+  left: 58px;
+  top: 106px;
+  width: 1455px;
+  height: 820px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: transparent;
+}
+
+.client-content-frame::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-top: 1px solid rgba(214,180,106,.58);
+  border-left: 1px solid rgba(32,211,197,.52);
+  clip-path: polygon(0 0, 32% 0, 31% 2px, 0 2px, 0 100%, 2px 100%, 2px 5%);
+}
+
+.edge {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-color: var(--accent);
+}
+
+.edge--tl {
+  top: -4px; left: -4px;
+  border-top: 3px solid var(--accent);
+  border-left: 3px solid var(--accent);
+}
+
+.edge--tr {
+  top: -4px; right: -4px;
+  border-top: 3px solid var(--gold);
+  border-right: 3px solid var(--gold);
+}
+
+.edge--br {
+  bottom: -4px; right: -4px;
+  border-bottom: 3px solid var(--accent);
+  border-right: 3px solid var(--accent);
+}
+
+.edge--bl {
+  bottom: -4px; left: -4px;
+  border-bottom: 3px solid var(--gold);
+  border-left: 3px solid var(--gold);
+}
+
+.client-footer {
+  position: absolute;
+  z-index: 5;
+  left: 58px;
+  right: 407px;
+  bottom: 0;
+  height: 122px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 22px;
+  align-items: center;
+  padding: 0 26px;
+  background:
+    linear-gradient(90deg, rgba(7,11,14,.96), rgba(7,11,14,.86));
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.client-footer__line {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(32,211,197,.52), rgba(214,180,106,.18));
+}
+
+.client-footer__signature {
+  color: #8f999d;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .28em;
+}
+
+/* ---------- Webcam ---------- */
+
+.webcam-frame {
+  position: absolute;
+  z-index: 10;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,.6),
+    0 18px 46px rgba(0,0,0,.22);
+}
+
+.webcam-frame::before,
+.webcam-frame::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.webcam-frame::before {
+  left: -2px;
+  top: 18px;
+  bottom: 18px;
+  width: 2px;
+  background: linear-gradient(180deg, transparent, var(--accent), transparent);
+}
+
+.webcam-frame::after {
+  top: -2px;
+  left: 18px;
+  right: 62%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--accent));
+}
+
+.webcam-frame--client {
+  left: 76px;
+  bottom: 126px;
+  width: 420px;
+  height: 236px;
+}
+
+.webcam-frame--ingame {
+  left: 34px;
+  bottom: 34px;
+  width: 360px;
+  height: 203px;
+}
+
+.webcam-frame__tag {
+  position: absolute;
+  left: 20px;
+  bottom: -38px;
+  height: 38px;
+  min-width: 160px;
+  padding: 0 16px 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(7,11,14,.96);
+  border: 1px solid rgba(255,255,255,.12);
+  border-top: 0;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: .12em;
+  font-size: 15px;
+}
+
+.corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+}
+
+.corner--tl {
+  top: -4px;
+  left: -4px;
+  border-top: 3px solid var(--gold);
+  border-left: 3px solid var(--gold);
+}
+
+.corner--br {
+  bottom: -4px;
+  right: -4px;
+  border-right: 3px solid var(--accent);
+  border-bottom: 3px solid var(--accent);
+}
+
+/* ---------- Chat ---------- */
+
+.chat-panel {
+  position: absolute;
+  z-index: 9;
+  top: 106px;
+  right: 58px;
+  width: 314px;
+  height: 820px;
+  display: grid;
+  grid-template-rows: 64px 1fr 44px;
+  background:
+    linear-gradient(180deg, rgba(10,15,18,.92), rgba(6,10,13,.84));
+  border: 1px solid rgba(255,255,255,.13);
+  box-shadow: 0 18px 60px rgba(0,0,0,.18);
+}
+
+.chat-panel::before,
+.chat-panel::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.chat-panel::before {
+  left: -1px;
+  top: -1px;
+  width: 44%;
+  height: 1px;
+  background: var(--accent);
+}
+
+.chat-panel::after {
+  right: -1px;
+  bottom: -1px;
+  width: 35%;
+  height: 1px;
+  background: var(--gold);
+}
+
+.chat-panel__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .24em;
+}
+
+.chat-panel__messages {
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow: hidden;
+}
+
+.chat-message {
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.chat-message__user {
+  color: var(--accent);
+  font-weight: 800;
+  margin-right: 7px;
+}
+
+.chat-message__user.is-accent {
+  color: var(--gold);
+}
+
+.chat-message__text {
+  color: #edf0f1;
+}
+
+.chat-panel__empty {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  text-transform: uppercase;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .28em;
+  color: rgba(255,255,255,.2);
+}
+
+.chat-panel__footer {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  align-items: center;
+  border-top: 1px solid var(--line-soft);
+}
+
+.chat-panel__footer span {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.chat-panel__footer span:nth-child(2) {
+  background: var(--gold);
+}
+
+/* ---------- In-game ---------- */
+
+.overlay--ingame {
+  background: transparent;
+}
+
+.chat-panel--compact {
+  top: 42px;
+  right: 28px;
+  width: 290px;
+  height: 570px;
+  background: rgba(6,10,13,.72);
+}
+
+.chat-panel--compact .chat-panel__header {
+  height: 54px;
+}
+
+.chat-panel--compact .chat-panel__messages {
+  gap: 11px;
+  padding-top: 13px;
+}
+
+.chat-panel--compact .chat-message {
+  font-size: 12px;
+}
+
+.ingame-signature {
+  position: absolute;
+  z-index: 8;
+  right: 30px;
+  bottom: 26px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  opacity: .72;
+}
+
+.ingame-signature .brand {
+  font-size: 18px;
+}
+
+.vision-mark {
+  width: 22px;
+  height: 12px;
+  border: 1px solid var(--accent);
+  border-radius: 50% / 60%;
+  position: relative;
+}
+
+.vision-mark::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--gold);
+  border-radius: 50%;
+  left: 8px;
+  top: 3px;
+}
+
+/* ---------- OBS-friendly motion ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .live-dot {
+    animation: livePulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes livePulse {
+    0%, 100% { opacity: .65; box-shadow: 0 0 6px rgba(32,211,197,.25); }
+    50% { opacity: 1; box-shadow: 0 0 16px rgba(32,211,197,.62); }
+  }
+}

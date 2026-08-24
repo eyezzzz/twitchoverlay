@@ -1,0 +1,20 @@
+:root {
+  --canvas-w: 1920;
+  --canvas-h: 1080;
+
+  --bg: #070b0d;
+  --panel: rgba(8, 13, 16, 0.86);
+  --panel-strong: rgba(7, 11, 14, 0.95);
+  --line: rgba(255, 255, 255, 0.12);
+  --line-soft: rgba(255, 255, 255, 0.06);
+
+  --text: #ededed;
+  --muted: #8d969a;
+
+  --accent: #20d3c5;
+  --accent-deep: #169f98;
+  --gold: #d6b46a;
+
+  --font-display: "Arial Narrow", "Roboto Condensed", "Helvetica Neue", Arial, sans-serif;
+  --font-ui: Inter, "Segoe UI", Arial, sans-serif;
+}
