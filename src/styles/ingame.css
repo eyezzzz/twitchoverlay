@@ -20,12 +20,124 @@
   box-shadow: 0 12px 34px rgba(0,0,0,.22);
 }
 
+/* One continuous footer exactly below the camera: brand + socials. */
 .overlay--ingame .webcam-frame__tag {
-  height: 28px;
-  bottom: -28px;
-  min-width: 132px;
-  font-size: 11px;
-  background: rgba(5,10,13,.86);
+  left: 0;
+  right: 0;
+  bottom: -32px;
+  width: 100%;
+  min-width: 0;
+  height: 32px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+  font-size: 10px;
+  background: rgba(5,10,13,.90);
+  border-color: rgba(255,255,255,.09);
+  border-top: 0;
+}
+
+.webcam-frame__brand-lockup {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: .1em;
+}
+
+.webcam-frame__socials {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  color: rgba(237,240,241,.70);
+  font-family: var(--font-ui);
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: lowercase;
+  white-space: nowrap;
+}
+
+.webcam-frame__social {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.webcam-frame__social strong {
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-style: italic;
+  letter-spacing: 0;
+}
+
+.webcam-frame__social-divider {
+  width: 12px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(32,211,197,.5), transparent);
+}
+
+/* Fixed wrapper prevents OBS/CEF from ever expanding the Instagram SVG. */
+.webcam-frame__instagram {
+  width: 14px;
+  height: 14px;
+  min-width: 14px;
+  max-width: 14px;
+  min-height: 14px;
+  max-height: 14px;
+  flex: 0 0 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: var(--gold);
+}
+
+.webcam-frame__instagram svg {
+  display: block !important;
+  width: 14px !important;
+  height: 14px !important;
+  min-width: 14px !important;
+  max-width: 14px !important;
+  min-height: 14px !important;
+  max-height: 14px !important;
+  flex: 0 0 14px;
+}
+
+/* Slow highlight that sweeps across the entire camera footer. */
+.webcam-frame__tag-sweep {
+  position: absolute;
+  z-index: 1;
+  top: -55%;
+  bottom: -55%;
+  left: -60px;
+  width: 42px;
+  opacity: 0;
+  transform: skewX(-18deg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(32,211,197,.05),
+    rgba(255,255,255,.18),
+    rgba(214,180,106,.06),
+    transparent
+  );
+  filter: blur(.2px);
+  pointer-events: none;
 }
 
 /* Chat forms one vertical rail directly above the camera. */
@@ -68,107 +180,15 @@
   background: rgba(5,10,13,.16);
 }
 
-/* Socials: subtle footer, away from the LoL HUD corners. */
-.ingame-socials {
-  position: absolute;
-  z-index: 8;
-  left: 500px;
-  bottom: 22px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  color: rgba(237,240,241,.72);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: .11em;
-  text-transform: lowercase;
-  pointer-events: none;
-}
-
-.ingame-socials__item {
-  position: relative;
-  height: 28px;
-  padding: 0 10px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  overflow: hidden;
-  background: rgba(5,10,13,.48);
-  border: 1px solid rgba(255,255,255,.06);
-  transform: skewX(-7deg);
-}
-
-.ingame-socials__item > * {
-  transform: skewX(7deg);
-}
-
-.ingame-socials__item::after {
-  content: "";
-  position: absolute;
-  top: -50%;
-  bottom: -50%;
-  left: -42px;
-  width: 26px;
-  transform: skewX(-18deg);
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,.13), transparent);
-  opacity: 0;
-}
-
-.ingame-socials__platform {
-  color: var(--accent);
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 900;
-  font-style: italic;
-}
-
-/* Wrapper + explicit SVG box prevents browser/OBS SVG sizing bugs. */
-.ingame-socials__instagram {
-  width: 14px;
-  height: 14px;
-  min-width: 14px;
-  max-width: 14px;
-  min-height: 14px;
-  max-height: 14px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--gold);
-  flex: 0 0 14px;
-  overflow: hidden;
-}
-
-.ingame-socials__instagram svg {
-  display: block !important;
-  width: 14px !important;
-  height: 14px !important;
-  min-width: 14px !important;
-  max-width: 14px !important;
-  min-height: 14px !important;
-  max-height: 14px !important;
-  flex: 0 0 14px;
-}
-
-.ingame-socials__divider {
-  width: 18px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(32,211,197,.4), transparent);
-}
-
 @media (prefers-reduced-motion: no-preference) {
-  .ingame-socials__item::after {
-    animation: ingameSocialSweep 8.4s ease-in-out infinite;
+  .webcam-frame__tag-sweep {
+    animation: ingameCamFooterSweep 8.5s ease-in-out infinite;
   }
 
-  .ingame-socials__item--instagram::after {
-    animation-delay: 3.4s;
-  }
-
-  @keyframes ingameSocialSweep {
-    0%, 56% { left: -42px; opacity: 0; }
-    62% { opacity: .8; }
-    75% { left: calc(100% + 24px); opacity: 0; }
-    100% { left: calc(100% + 24px); opacity: 0; }
+  @keyframes ingameCamFooterSweep {
+    0%, 58% { left: -60px; opacity: 0; }
+    63% { opacity: .75; }
+    76% { left: calc(100% + 36px); opacity: .15; }
+    80%, 100% { left: calc(100% + 36px); opacity: 0; }
   }
 }
