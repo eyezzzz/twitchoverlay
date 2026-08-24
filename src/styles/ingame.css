@@ -4,13 +4,17 @@
   background: transparent !important;
 }
 
-/* Left rail: chat above cam. */
+/*
+ * Calibrated from the working Client scene.
+ * Design space 1920x1080 -> OBS canvas 1280x720 = 2/3 scale.
+ * Client camera is 400x225 here, therefore ~267x150 in OBS.
+ */
 .overlay--ingame .webcam-frame--ingame {
-  left: 34px;
+  left: 66px;
   right: auto;
-  bottom: 52px;
-  width: 360px;
-  height: 203px;
+  bottom: 48px;
+  width: 400px;
+  height: 225px;
   border-color: rgba(255,255,255,.14);
   background: transparent;
   box-shadow: 0 12px 34px rgba(0,0,0,.22);
@@ -24,16 +28,16 @@
   background: rgba(5,10,13,.86);
 }
 
+/* Chat forms one vertical rail directly above the camera. */
 .overlay--ingame .chat-panel--compact {
   top: auto;
   right: auto;
-  left: 34px;
-  bottom: 271px;
-  width: 360px;
-  height: 440px;
+  left: 66px;
+  bottom: 291px;
+  width: 400px;
+  height: 420px;
   grid-template-rows: 44px 1fr 24px;
-  background:
-    linear-gradient(180deg, rgba(5,10,13,.64), rgba(5,10,13,.46));
+  background: linear-gradient(180deg, rgba(5,10,13,.64), rgba(5,10,13,.46));
   border-color: rgba(255,255,255,.075);
   box-shadow: 0 12px 34px rgba(0,0,0,.12);
   backdrop-filter: blur(2px);
@@ -68,7 +72,7 @@
 .ingame-socials {
   position: absolute;
   z-index: 8;
-  left: 438px;
+  left: 500px;
   bottom: 22px;
   height: 30px;
   display: flex;
@@ -119,11 +123,31 @@
   font-style: italic;
 }
 
+/* Wrapper + explicit SVG box prevents browser/OBS SVG sizing bugs. */
 .ingame-socials__instagram {
   width: 14px;
   height: 14px;
+  min-width: 14px;
+  max-width: 14px;
+  min-height: 14px;
+  max-height: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: var(--gold);
-  flex: 0 0 auto;
+  flex: 0 0 14px;
+  overflow: hidden;
+}
+
+.ingame-socials__instagram svg {
+  display: block !important;
+  width: 14px !important;
+  height: 14px !important;
+  min-width: 14px !important;
+  max-width: 14px !important;
+  min-height: 14px !important;
+  max-height: 14px !important;
+  flex: 0 0 14px;
 }
 
 .ingame-socials__divider {
