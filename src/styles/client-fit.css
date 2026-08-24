@@ -1,0 +1,27 @@
+/*
+ * Client fit for the current OBS composition.
+ *
+ * Overlay design space: 1920x1080
+ * OBS canvas/display: 1280x720 (2/3 scale)
+ *
+ * Therefore:
+ *   1536x864 in the overlay = exactly 1024x576 in OBS.
+ *
+ * Keep the League Client source at 1024x576. Do not resize it to fit the
+ * overlay; this CSS makes the overlay fit the source.
+ */
+
+.overlay--client .client-content-frame {
+  left: 48px;
+  top: 90px;
+  width: 1536px;
+  height: 864px;
+}
+
+/* Keep the chat beside the 16:9 client frame instead of overlapping it. */
+.overlay--client .chat-panel {
+  top: 90px;
+  right: 32px;
+  width: 288px;
+  height: 864px;
+}
