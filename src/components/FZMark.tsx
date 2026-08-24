@@ -9,28 +9,19 @@ export function FZMark({ size = 44 }: FZMarkProps) {
       className="fz-mark"
       width={size}
       height={size}
-      viewBox="0 0 64 64"
+      viewBox="0 0 100 90"
       fill="none"
     >
-      {/* Angular F: keeps the original cut/forward aesthetic, but reads clearly. */}
+      {/* Approved channel mark: open angular F, long lower stem. */}
       <path
-        d="M8 10H36L31 19H20V27H31L26 36H20V53H8V10Z"
+        d="M25 16H73L66 27H38L34 35H54L46 44H29L21 69L8 76L25 16Z"
         fill="currentColor"
-      />
-      <path
-        d="M28 10H36L31 19H23L28 10Z"
-        fill="var(--accent)"
       />
 
-      {/* Z: visibly separate from the F, with the same diagonal-tech language. */}
+      {/* Approved Z: complete top-to-bottom diagonal, eating into the F at the top. */}
       <path
-        d="M39 10H59L54 19H48L32 45H48L54 36H60L50 54H27L32 45L48 19H39V10Z"
+        d="M66 16H92L83 28H73L48 63H77L86 54L80 75H36L45 62L70 28H58L66 16Z"
         fill="var(--accent)"
-      />
-      <path
-        d="M44 19H48L32 45H28L44 19Z"
-        fill="currentColor"
-        opacity=".9"
       />
     </svg>
   )
