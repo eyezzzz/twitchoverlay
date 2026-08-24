@@ -27,14 +27,17 @@
 }
 
 /*
- * Keep the webcam fully inside the lower-left corner of the client frame.
- * At the OBS 2/3 scale this becomes approximately:
- *   x 43 / y 460 / 267 x 150
- * The FIETZLOL tag also remains inside the client frame.
+ * Match the overlay webcam frame to the webcam's CURRENT position in OBS.
+ * OBS position: x 44 / y 477.
+ * The browser source is rendered at 2/3 scale, so the matching design-space
+ * coordinates are x 66 / y 715.5.
+ *
+ * Size remains the existing 400x225 design-space frame, which appears as
+ * approximately 267x150 in the 1280x720 OBS canvas.
  */
 .overlay--client .webcam-frame--client {
-  left: 64px;
-  top: 690px;
+  left: 66px;
+  top: 715.5px;
   bottom: auto;
   width: 400px;
   height: 225px;
