@@ -1,0 +1,272 @@
+/* Motion and finishing layer for the CLIENT scene.
+ * Loaded after overlay.css + client-fit.css so it can refine the broadcast
+ * composition without changing the calibrated League Client or webcam fit.
+ */
+
+/* ---------- Neon comet orbit ---------- */
+
+.client-comet {
+  position: absolute;
+  z-index: 7;
+  inset: -7px;
+  width: calc(100% + 14px);
+  height: calc(100% + 14px);
+  overflow: visible;
+  pointer-events: none;
+  opacity: .74;
+}
+
+.client-comet rect {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.client-comet__trail {
+  stroke: rgba(32, 211, 197, .24);
+  stroke-width: 3;
+  stroke-dasharray: 72 928;
+  filter: url(#client-comet-glow);
+}
+
+.client-comet__core {
+  stroke: rgba(32, 211, 197, .95);
+  stroke-width: 2;
+  stroke-dasharray: 26 974;
+  filter: url(#client-comet-glow);
+}
+
+.client-comet__spark {
+  stroke: rgba(214, 180, 106, .98);
+  stroke-width: 3.4;
+  stroke-dasharray: 4 996;
+  filter: url(#client-comet-glow);
+}
+
+/* ---------- Twitch chat / LivePix split ---------- */
+
+.overlay--client .chat-panel__messages {
+  justify-content: flex-end;
+}
+
+.livepix-dock {
+  position: absolute;
+  z-index: 8;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(7, 11, 14, .12), rgba(7, 11, 14, .04));
+}
+
+.livepix-dock::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, .045);
+  mask-image: linear-gradient(180deg, transparent, #000 16%, #000 84%, transparent);
+}
+
+.livepix-dock__corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+}
+
+.livepix-dock__corner--tl {
+  left: -1px;
+  top: -1px;
+  border-left: 1px solid rgba(32, 211, 197, .62);
+  border-top: 1px solid rgba(32, 211, 197, .62);
+}
+
+.livepix-dock__corner--br {
+  right: -1px;
+  bottom: -1px;
+  border-right: 1px solid rgba(214, 180, 106, .62);
+  border-bottom: 1px solid rgba(214, 180, 106, .62);
+}
+
+.livepix-dock__label {
+  position: absolute;
+  right: 0;
+  top: -24px;
+  color: rgba(237, 240, 241, .45);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .28em;
+}
+
+/* ---------- Social motion rail ---------- */
+
+.client-footer {
+  grid-template-columns: auto 1fr auto;
+}
+
+.social-rail {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 430px;
+}
+
+.social-rail__divider {
+  width: 18px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(214,180,106,.52), transparent);
+}
+
+.social-item {
+  position: relative;
+  height: 30px;
+  padding: 0 11px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  overflow: hidden;
+  background: rgba(255,255,255,.018);
+  border: 1px solid rgba(255,255,255,.065);
+  transform: skewX(-7deg);
+}
+
+.social-item > * {
+  transform: skewX(7deg);
+}
+
+.social-item::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px rgba(32,211,197,.55);
+}
+
+.social-item--instagram::before {
+  background: var(--gold);
+  box-shadow: 0 0 8px rgba(214,180,106,.48);
+}
+
+.social-item::after {
+  content: "";
+  position: absolute;
+  inset: -50% auto -50% -48px;
+  width: 32px;
+  transform: skewX(-18deg);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent);
+  opacity: 0;
+}
+
+.social-item__platform {
+  min-width: 18px;
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: .08em;
+}
+
+.social-item--instagram .social-item__platform {
+  color: var(--gold);
+}
+
+.social-item__handle {
+  color: rgba(238,241,242,.82);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .13em;
+  text-transform: lowercase;
+}
+
+.client-footer__line {
+  position: relative;
+  overflow: hidden;
+}
+
+.client-footer__line > span {
+  position: absolute;
+  left: -100px;
+  top: -1px;
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent), rgba(214,180,106,.7), transparent);
+  filter: drop-shadow(0 0 5px rgba(32,211,197,.5));
+}
+
+.client-footer__signature {
+  white-space: nowrap;
+}
+
+/* ---------- Motion ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .client-comet__trail,
+  .client-comet__core,
+  .client-comet__spark {
+    animation: clientCometOrbit 9.6s linear infinite;
+  }
+
+  .client-comet__core {
+    animation-duration: 9.6s;
+  }
+
+  .client-comet__spark {
+    animation-duration: 9.6s;
+  }
+
+  .social-item::before {
+    animation: socialDot 3.2s ease-in-out infinite;
+  }
+
+  .social-item::after {
+    animation: socialSweep 7.8s ease-in-out infinite;
+  }
+
+  .social-item--instagram::after {
+    animation-delay: 3.2s;
+  }
+
+  .client-footer__line > span {
+    animation: footerTracer 8.8s ease-in-out infinite;
+  }
+
+  .overlay--client .chat-message {
+    animation: chatMessageIn .28s cubic-bezier(.2,.75,.25,1) both;
+  }
+
+  @keyframes clientCometOrbit {
+    from { stroke-dashoffset: 0; }
+    to { stroke-dashoffset: -1000; }
+  }
+
+  @keyframes socialDot {
+    0%, 100% { opacity: .48; transform: scale(.8); }
+    50% { opacity: 1; transform: scale(1.15); }
+  }
+
+  @keyframes socialSweep {
+    0%, 55% { left: -48px; opacity: 0; }
+    61% { opacity: .9; }
+    74% { left: calc(100% + 28px); opacity: 0; }
+    100% { left: calc(100% + 28px); opacity: 0; }
+  }
+
+  @keyframes footerTracer {
+    0%, 12% { left: -100px; opacity: 0; }
+    20% { opacity: .8; }
+    62% { left: 105%; opacity: .6; }
+    70%, 100% { left: 105%; opacity: 0; }
+  }
+
+  @keyframes chatMessageIn {
+    from { opacity: 0; transform: translateX(7px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .client-comet {
+    display: none;
+  }
+}
