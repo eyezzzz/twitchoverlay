@@ -41,11 +41,23 @@ Browser Source:
 - 30 FPS
 - `Shutdown source when not visible`: ativado
 
-### Client
+### Client — calibrado para League Client 1280 × 720
+
+O League Client deve permanecer em tamanho nativo, sem stretch.
 
 - overlay: `/client`
-- webcam sugerida: x 76 / y 680 / 420 × 236
-- área principal aproximada: x 58 / y 106 / 1455 × 820
+- League Client Window Capture: x `120` / y `124` / `1280 × 720`
+- webcam: x `144` / y `621` / `360 × 203`
+- chat: x `1424` / y `124` / `376 × 720`
+
+No OBS, para a captura do League Client:
+
+1. Transformar → Redefinir transformação
+2. Editar transformação
+3. Posição X: `120`
+4. Posição Y: `124`
+5. Tamanho: `1280 × 720`
+6. Não esticar para preencher a moldura
 
 ### In-game
 
