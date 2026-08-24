@@ -121,9 +121,13 @@
   }
 
   @keyframes donationShell {
-    0%, 4% { opacity: 0; }
-    7%, 82% { opacity: 1; }
-    86%, 100% { opacity: 0; }
+    0%, 3% { opacity: 0; transform: translateY(5px); }
+    5%, 24% { opacity: 1; transform: translateY(0); }
+    28%, 35% { opacity: 0; transform: translateY(-3px); }
+    38%, 57% { opacity: 1; transform: translateY(0); }
+    61%, 68% { opacity: 0; transform: translateY(-3px); }
+    71%, 90% { opacity: 1; transform: translateY(0); }
+    94%, 100% { opacity: 0; transform: translateY(-3px); }
   }
 
   @keyframes donationDot {
