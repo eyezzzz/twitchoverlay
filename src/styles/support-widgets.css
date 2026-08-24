@@ -1,0 +1,139 @@
+/* Shared LivePix + support reminder treatments for Client and Ingame. */
+
+/* Ingame LivePix occupies the minimap zone by request. */
+.overlay--ingame .livepix-dock--ingame {
+  right: 32px;
+  bottom: 32px;
+  width: 288px;
+  height: 282px;
+  background: linear-gradient(180deg, rgba(5,10,13,.10), rgba(5,10,13,.025));
+}
+
+.overlay--ingame .livepix-dock--ingame::before {
+  border-color: rgba(255,255,255,.035);
+}
+
+.overlay--ingame .livepix-dock--ingame .livepix-dock__label {
+  top: -20px;
+  font-size: 7px;
+  opacity: .75;
+}
+
+.donation-reminder {
+  position: absolute;
+  z-index: 12;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  overflow: hidden;
+  pointer-events: none;
+  color: rgba(237,240,241,.72);
+  background: linear-gradient(90deg, rgba(5,10,13,.82), rgba(5,10,13,.62));
+  border: 1px solid rgba(255,255,255,.07);
+  box-shadow: 0 10px 30px rgba(0,0,0,.16);
+  backdrop-filter: blur(3px);
+}
+
+.donation-reminder::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, transparent, rgba(32,211,197,.75), transparent);
+}
+
+.donation-reminder--client {
+  left: 50%;
+  top: 78px;
+  width: 500px;
+  transform: translateX(-50%);
+}
+
+.donation-reminder--ingame {
+  right: 32px;
+  bottom: 332px;
+  width: 288px;
+}
+
+.donation-reminder__dot {
+  width: 6px;
+  height: 6px;
+  flex: 0 0 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(32,211,197,.55);
+}
+
+.donation-reminder__messages {
+  position: relative;
+  min-width: 0;
+  width: 100%;
+  height: 18px;
+}
+
+.donation-reminder__message {
+  --reminder-index: 0;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  white-space: nowrap;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  opacity: 0;
+  transform: translateY(7px);
+}
+
+.donation-reminder__message strong {
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .10em;
+}
+
+.overlay--ingame .donation-reminder__message {
+  font-size: 8px;
+  letter-spacing: .08em;
+}
+
+.overlay--ingame .donation-reminder__message strong {
+  font-size: 9px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .donation-reminder {
+    animation: donationShell 24s ease-in-out infinite;
+  }
+
+  .donation-reminder__dot {
+    animation: donationDot 2.8s ease-in-out infinite;
+  }
+
+  .donation-reminder__message {
+    animation: donationMessage 24s ease-in-out infinite;
+    animation-delay: calc(var(--reminder-index) * 8s);
+  }
+
+  @keyframes donationShell {
+    0%, 4% { opacity: 0; }
+    7%, 82% { opacity: 1; }
+    86%, 100% { opacity: 0; }
+  }
+
+  @keyframes donationDot {
+    0%, 100% { opacity: .5; transform: scale(.8); }
+    50% { opacity: 1; transform: scale(1.15); }
+  }
+
+  @keyframes donationMessage {
+    0%, 2% { opacity: 0; transform: translateY(7px); }
+    5%, 24% { opacity: 1; transform: translateY(0); }
+    29%, 100% { opacity: 0; transform: translateY(-7px); }
+  }
+}
