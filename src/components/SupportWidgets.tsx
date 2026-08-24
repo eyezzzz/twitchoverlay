@@ -1,3 +1,5 @@
+import type { CSSProperties } from 'react'
+
 type DonationReminderProps = {
   mode: 'client' | 'ingame'
 }
@@ -27,7 +29,7 @@ export function DonationReminder({ mode }: DonationReminderProps) {
           <span
             className="donation-reminder__message"
             key={index}
-            style={{ '--reminder-index': index } as React.CSSProperties}
+            style={{ '--reminder-index': index } as CSSProperties}
           >
             {message}
           </span>
