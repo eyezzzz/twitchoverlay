@@ -4,6 +4,7 @@ import App from './App'
 import './styles/tokens.css'
 import './styles/global.css'
 import './styles/overlay.css'
+import './styles/client-1280.css'
 import './debug'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
