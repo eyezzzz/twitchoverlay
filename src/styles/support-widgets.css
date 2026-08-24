@@ -1,9 +1,11 @@
 /* Shared LivePix + support reminder treatments for Client and Ingame. */
 
-/* Ingame LivePix occupies the minimap zone by request. */
+/* Ingame LivePix occupies the minimap zone by request.
+ * Leave a very small strip underneath for the donation reminder.
+ */
 .overlay--ingame .livepix-dock--ingame {
   right: 32px;
-  bottom: 32px;
+  bottom: 44px;
   width: 288px;
   height: 282px;
   background: linear-gradient(180deg, rgba(5,10,13,.10), rgba(5,10,13,.025));
@@ -46,17 +48,23 @@
   background: linear-gradient(180deg, transparent, rgba(32,211,197,.75), transparent);
 }
 
+/* Client: LivePix dock ends at y=954 in the 1920x1080 design.
+ * Reminder now sits directly underneath it, inside the right rail.
+ */
 .donation-reminder--client {
-  left: 50%;
-  top: 78px;
-  width: 500px;
-  transform: translateX(-50%);
+  right: 32px;
+  top: 966px;
+  width: 288px;
 }
 
+/* Ingame: compact strip directly below the LivePix/minimap dock. */
 .donation-reminder--ingame {
   right: 32px;
-  bottom: 332px;
+  bottom: 8px;
   width: 288px;
+  height: 28px;
+  gap: 8px;
+  padding: 0 10px;
 }
 
 .donation-reminder__dot {
