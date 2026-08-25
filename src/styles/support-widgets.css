@@ -1,24 +1,27 @@
 /* Shared LivePix + support reminder treatments for Client and Ingame. */
 
 /* Ingame LivePix occupies the minimap zone by request.
- * Leave a very small strip underneath for the donation reminder.
+ * Chrome is intentionally very light so the QR does not feel like a second HUD.
  */
 .overlay--ingame .livepix-dock--ingame {
-  right: 32px;
+  right: 24px;
   bottom: 44px;
   width: 288px;
   height: 282px;
-  background: linear-gradient(180deg, rgba(5,10,13,.10), rgba(5,10,13,.025));
+  background: transparent;
 }
 
 .overlay--ingame .livepix-dock--ingame::before {
-  border-color: rgba(255,255,255,.035);
+  border-color: rgba(255,255,255,.02);
+  opacity: .45;
+}
+
+.overlay--ingame .livepix-dock--ingame .livepix-dock__corner {
+  opacity: .38;
 }
 
 .overlay--ingame .livepix-dock--ingame .livepix-dock__label {
-  top: -20px;
-  font-size: 7px;
-  opacity: .75;
+  display: none;
 }
 
 .donation-reminder {
@@ -49,7 +52,7 @@
 }
 
 /* Client: LivePix dock ends at y=954 in the 1920x1080 design.
- * Reminder now sits directly underneath it, inside the right rail.
+ * Reminder sits directly underneath it, inside the right rail.
  */
 .donation-reminder--client {
   right: 32px;
@@ -57,14 +60,24 @@
   width: 288px;
 }
 
-/* Ingame: compact strip directly below the LivePix/minimap dock. */
+/* Ingame: low-contrast strip directly below the LivePix/minimap dock. */
 .donation-reminder--ingame {
-  right: 32px;
+  right: 24px;
   bottom: 8px;
   width: 288px;
   height: 28px;
   gap: 8px;
   padding: 0 10px;
+  color: rgba(237,240,241,.58);
+  background: linear-gradient(90deg, rgba(5,10,13,.52), rgba(5,10,13,.28));
+  border-color: rgba(255,255,255,.035);
+  box-shadow: none;
+  backdrop-filter: blur(2px);
+}
+
+.overlay--ingame .donation-reminder::before {
+  width: 1px;
+  opacity: .55;
 }
 
 .donation-reminder__dot {
@@ -74,6 +87,14 @@
   border-radius: 50%;
   background: var(--accent);
   box-shadow: 0 0 10px rgba(32,211,197,.55);
+}
+
+.overlay--ingame .donation-reminder__dot {
+  width: 5px;
+  height: 5px;
+  flex-basis: 5px;
+  opacity: .65;
+  box-shadow: 0 0 7px rgba(32,211,197,.35);
 }
 
 .donation-reminder__messages {
@@ -107,11 +128,12 @@
 
 .overlay--ingame .donation-reminder__message {
   font-size: 8px;
-  letter-spacing: .08em;
+  letter-spacing: .065em;
 }
 
 .overlay--ingame .donation-reminder__message strong {
-  font-size: 9px;
+  font-size: 8px;
+  color: rgba(214,180,106,.78);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -139,8 +161,8 @@
   }
 
   @keyframes donationDot {
-    0%, 100% { opacity: .5; transform: scale(.8); }
-    50% { opacity: 1; transform: scale(1.15); }
+    0%, 100% { opacity: .45; transform: scale(.8); }
+    50% { opacity: .9; transform: scale(1.08); }
   }
 
   @keyframes donationMessage {
