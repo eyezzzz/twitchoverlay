@@ -142,8 +142,8 @@
 }
 
 /*
- * Chat becomes a light floating rail above the camera instead of a large box.
- * Older lines fade naturally into the game; newest messages stay readable.
+ * Ingame chat is intentionally just floating text over the game.
+ * No title, panel fill, borders, corners or footer remain visible.
  */
 .overlay--ingame .chat-panel--compact {
   top: auto;
@@ -151,57 +151,52 @@
   left: 24px;
   bottom: 281px;
   width: 400px;
-  height: 330px;
-  grid-template-rows: 32px 1fr 0;
-  background: linear-gradient(180deg, rgba(5,10,13,.22), rgba(5,10,13,.08));
-  border: 0;
-  box-shadow: none;
-  backdrop-filter: blur(1px);
+  height: 300px;
+  display: grid;
+  grid-template-rows: 1fr;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  overflow: visible;
 }
 
-.overlay--ingame .chat-panel--compact::before {
-  width: 72px;
-  opacity: .55;
-}
-
+/* Remove the shared chat decorative rails completely in-game. */
+.overlay--ingame .chat-panel--compact::before,
 .overlay--ingame .chat-panel--compact::after {
-  display: none;
+  display: none !important;
+  content: none !important;
 }
 
-.overlay--ingame .chat-panel--compact .chat-panel__header {
-  height: 32px;
-  padding: 0 10px;
-  gap: 8px;
-  border-bottom-color: rgba(255,255,255,.035);
-  font-size: 8px;
-  letter-spacing: .18em;
-  color: rgba(237,240,241,.48);
-  background: rgba(5,10,13,.10);
-}
-
-.overlay--ingame .chat-panel--compact .live-dot {
-  width: 5px;
-  height: 5px;
-  opacity: .72;
+.overlay--ingame .chat-panel--compact .chat-panel__header,
+.overlay--ingame .chat-panel--compact .chat-panel__footer {
+  display: none !important;
 }
 
 .overlay--ingame .chat-panel--compact .chat-panel__messages {
+  grid-row: 1;
+  height: 100%;
   justify-content: flex-end;
   gap: 6px;
-  padding: 18px 10px 8px;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.25) 14%, #000 38%, #000 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.25) 14%, #000 38%, #000 100%);
+  padding: 10px 8px 8px;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.15) 12%, #000 38%, #000 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.15) 12%, #000 38%, #000 100%);
 }
 
 .overlay--ingame .chat-panel--compact .chat-message {
   font-size: 10px;
   line-height: 1.24;
-  text-shadow: 0 1px 3px rgba(0,0,0,.88);
+  text-shadow:
+    0 1px 2px rgba(0,0,0,.95),
+    0 0 6px rgba(0,0,0,.55);
   opacity: .9;
 }
 
 .overlay--ingame .chat-panel--compact .chat-message__text {
-  color: rgba(237,240,241,.76);
+  color: rgba(237,240,241,.78);
 }
 
 /* Keep only the newest eight lines and progressively fade the older ones. */
@@ -209,18 +204,14 @@
   display: none;
 }
 
-.overlay--ingame .chat-panel--compact .chat-message:nth-last-child(8) { opacity: .12; }
-.overlay--ingame .chat-panel--compact .chat-message:nth-last-child(7) { opacity: .18; }
-.overlay--ingame .chat-panel--compact .chat-message:nth-last-child(6) { opacity: .28; }
-.overlay--ingame .chat-panel--compact .chat-message:nth-last-child(5) { opacity: .40; }
-.overlay--ingame .chat-panel--compact .chat-message:nth-last-child(4) { opacity: .54; }
-.overlay--ingame .chat-panel--compact .chat-message:nth-last-child(3) { opacity: .68; }
+.overlay--ingame .chat-panel--compact .chat-message:nth-last-child(8) { opacity: .10; }
+.overlay--ingame .chat-panel--compact .chat-message:nth-last-child(7) { opacity: .16; }
+.overlay--ingame .chat-panel--compact .chat-message:nth-last-child(6) { opacity: .24; }
+.overlay--ingame .chat-panel--compact .chat-message:nth-last-child(5) { opacity: .36; }
+.overlay--ingame .chat-panel--compact .chat-message:nth-last-child(4) { opacity: .50; }
+.overlay--ingame .chat-panel--compact .chat-message:nth-last-child(3) { opacity: .66; }
 .overlay--ingame .chat-panel--compact .chat-message:nth-last-child(2) { opacity: .82; }
 .overlay--ingame .chat-panel--compact .chat-message:nth-last-child(1) { opacity: 1; }
-
-.overlay--ingame .chat-panel--compact .chat-panel__footer {
-  display: none;
-}
 
 @media (prefers-reduced-motion: no-preference) {
   .webcam-frame__tag-sweep {
