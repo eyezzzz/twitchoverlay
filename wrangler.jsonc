@@ -2,7 +2,7 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "twitchoverlay",
   "compatibility_date": "2026-08-24",
-  "main": "./worker/index-v2.js",
+  "main": "./worker/index-v3.js",
   "keep_vars": true,
   "workers_dev": true,
   "vars": {
